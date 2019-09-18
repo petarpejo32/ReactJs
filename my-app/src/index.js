@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import User from './User'
+import Wrapper from './Wrapper.js'
 import Heading from './Heading'
 import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom'
 
@@ -48,17 +48,17 @@ const Routes = () => {
         <Router>
             <Menu/>
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/about' component={About}/>
-                <Route path='/contact' component={Contact}/>
-                <Route path='/login' component={Login}/>  
+                <Route exact path='/' component={Home} render={()=> <Home name='Test'/>}/>
+                <Route exact path='/about' component={About}/>
+                <Route exact path='/contact' component={Contact}/>
+                <Route exact path='/login' component={Login}/>  
                 <Route exact
                 path='/user'
                 render={(props) =>
                     
                     <React.Fragment>
-                        <User {...props}/>
-                        <Heading {...props}/>
+                        <Wrapper/>
+                        <Heading/>
                     </React.Fragment>
                 }
                 />   
