@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import Wrapper from './Wrapper'
 import UsersList from './UsersList'
+import { Provider } from 'react-redux'
+import store from './Redux/store.js'
 import Home from './Home'
 import Login from './Login'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
@@ -72,4 +74,8 @@ const Routes = () => {
     )
 } */
 
-ReactDOM.render(<Routes />, app)
+ReactDOM.render(
+<Provider store={store}>
+    <Routes />
+</Provider>
+,app)
