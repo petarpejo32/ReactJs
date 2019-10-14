@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import Wrapper from './Wrapper'
-import UserList from './UserList'
+import UsersList from './UsersList'
 import Home from './Home'
 import Login from './Login'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
@@ -38,8 +38,6 @@ const Contact = () => {
     return (<h1>Welcome to my contact page!</h1>)
 }
 
-
-
 const Routes = () => {
     return (
         <Router>
@@ -52,12 +50,12 @@ const Routes = () => {
                 <Route
                     exact
                     path='/user'
-                    render={() => 
-                        <Wrapper 
-                        component={ UserList }
-                        url={'https://jsonplaceholder.typicode.com/users'}/>
-                    
-                    
+                    render={ () =>
+                        <Wrapper
+                            component={UsersList}
+                            methodType='GET'
+                            url='https://jsonplaceholder.typicode.com/users'
+                        />
                     }
                 />
             </Switch>
