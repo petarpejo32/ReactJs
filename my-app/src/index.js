@@ -8,6 +8,8 @@ import Home from './Home'
 import Login from './Login'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
+import table from './table'
+
 const app = document.getElementById('app')
 
 const Menu = () => {
@@ -20,7 +22,7 @@ const Menu = () => {
                 <Link to='/about'>About us</Link>
             </li>
             <li>
-                <Link to='/contact'>Contact us</Link>
+                <Link to='/users_list'>UsersList</Link>
             </li>
             <li>
                 <Link to='/login'>Log in</Link>
@@ -47,7 +49,7 @@ const Routes = () => {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
-                <Route exact path='/contact' component={Contact} />
+                <Route exact path='/users_list' component={table} />
                 <Route exact path='/login' component={Login} />
                 <Route
                     exact
