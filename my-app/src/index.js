@@ -1,14 +1,13 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
+import { Provider } from 'react-redux'
+import store from './redux/store.js'
 import Wrapper from './Wrapper'
 import UsersList from './UsersList'
-import { Provider } from 'react-redux'
-import store from './Redux/store.js'
 import Home from './Home'
 import Login from './Login'
+import Table from './Table'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-
-import table from './table'
 
 const app = document.getElementById('app')
 
@@ -22,7 +21,7 @@ const Menu = () => {
                 <Link to='/about'>About us</Link>
             </li>
             <li>
-                <Link to='/users_list'>UsersList</Link>
+                <Link to='/users_list'>Users List</Link>
             </li>
             <li>
                 <Link to='/login'>Log in</Link>
@@ -49,7 +48,7 @@ const Routes = () => {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
-                <Route exact path='/users_list' component={table} />
+                <Route exact path='/users_list' component={Table} />
                 <Route exact path='/login' component={Login} />
                 <Route
                     exact
@@ -77,7 +76,6 @@ const Routes = () => {
 } */
 
 ReactDOM.render(
-<Provider store={store}>
-    <Routes />
-</Provider>
-,app)
+    <Provider store={store}>
+        <Routes />
+    </Provider>, app)
