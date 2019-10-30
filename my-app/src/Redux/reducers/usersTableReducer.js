@@ -6,26 +6,67 @@ export function usersTableReducer (state = { users: [] }, action) {
             }
         }
         case 'SAVE_USER': {
-
-            const newUser=action.payload
-            if(!newUser.id){
-                const oldArray = state.users.slice()
-                newUser.id = state.users.lenght + 1
-                newArray.push(newUser)
+            const newUser = action.payload
+            let newArray = []
+            try {
+                if (!newUser.id) {
+                    newArray = state.users.slice()
+                    newUser.id = state.users[state.users.length - 1].id + 1
+                    newArray.push(newUser)
+                    alert('User ')
+                } else {
+                    newArray = state.users.slice()
+                    for (let i = 0; i < newArray.length; i++) {
+                        if (newArray[i].id === newUser.id) {
+                            newArray.splice(i, 1, newUser)
+                            break
+                        }
+                    }
+                }
+                alert('User successfully added')
+                return {
+                        ...state, users: newArray
+                    }
+                }
+               
+                
+            catch {(error)
+                console.warn(error)
+                alert('Something went wrong!')
+                return{
+                    ...state
+                }
             }
-            else{
-                const newArray=state.users.slice()
-                const user = newArray.find((element)=>{
-                    return element.id===newUser.id
-                })
-            }
-            return {
-                ...state
-            }
+            // finally {
+               
+            // }
+            
+           
         }
         case 'DELETE_USER': {
-            return {
-                ...state
+            const newUser = action.payload
+            let newArray = state.users.slice()
+            try {
+                    for (let i = 0; i < newArray.length; i++) {
+                        if (newArray[i].id === newUser.id) {
+                            newArray.splice(i, 1)
+                            break
+                        }
+                    }
+                
+                alert('User successfully deleted')
+                return {
+                        ...state, users: newArray
+                    }
+                }
+               
+                
+            catch {(error)
+                console.warn(error)
+                alert('Something went wrong!')
+                return{
+                    ...state
+                }
             }
         }
         default: {

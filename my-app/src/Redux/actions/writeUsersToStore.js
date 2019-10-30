@@ -6,10 +6,13 @@ export function writeUsersToStore (data) {
 }
 
 export function addUserToStore (user) {
-    return {
-        type: 'SAVE_USER',
-        payload: user
+    return function(dispatch) {
+        dispatch({
+            type:'SAVE_USER',
+            payload:user
+        })
     }
+        
 }
 
 export function removeUserFromStore (data) {
